@@ -77,9 +77,9 @@ public class FlabbyBird extends SurfaceView implements SurfaceHolder.Callback, R
     //记录游戏的状态
     private GameStatus status = GameStatus.WATTING;
     //触摸上升的距离
-    private static final int TOUCH_UP_DIS = -10;
+    private static final int TOUCH_UP_DIS = -23;
     private int upDis = Util.dip2px(getContext(),TOUCH_UP_DIS);
-    private int downSpeed = Util.dip2px(getContext(),2);
+    private int downSpeed = Util.dip2px(getContext(),4);
     private int tmpMoveDis;
     //记录需要移除的管道
     private List<Pipe> removePipeList = new ArrayList<Pipe>();
@@ -113,7 +113,7 @@ public class FlabbyBird extends SurfaceView implements SurfaceHolder.Callback, R
         mPaint = new Paint();
         mPaint.setAntiAlias(true);
         mPaint.setDither(true);
-        speed = Util.dip2px(getContext(), 2);
+        speed = Util.dip2px(getContext(), 7);
         //管道宽度初始化
         mPipeWidth = Util.dip2px(getContext(), PIPE_WIDTH);
         //设置可获得焦点
@@ -320,10 +320,14 @@ public class FlabbyBird extends SurfaceView implements SurfaceHolder.Callback, R
     }
 
     public int createPipeX(){
-        if(mRemovePipes < 5) {
+        if(mRemovePipes < 3) {
             return Util.dip2px(getContext(),160);
+        }else if(mRemovePipes < 7){
+            return Util.dip2px(getContext(),140);
+        }else if(mRemovePipes < 15){
+            return Util.dip2px(getContext(),135);
         }else{
-            return Util.dip2px(getContext(),100);
+            return Util.dip2px(getContext(),130);
         }
     }
 
@@ -331,7 +335,7 @@ public class FlabbyBird extends SurfaceView implements SurfaceHolder.Callback, R
     public void initPos(){
         pipeList.clear();
         removePipeList.clear();
-        bird.setY(mHeight*2/3);
+        bird.setY(mHeight*1/3);
         tmpMoveDis = 0;
         mRemovePipes = 0;
     }

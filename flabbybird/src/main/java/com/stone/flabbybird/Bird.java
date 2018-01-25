@@ -12,7 +12,7 @@ import android.graphics.RectF;
 public class Bird {
 
     //鸟在屏幕 2/3 高的位置
-    private static final float BIRD_POSITION = 2/3F;
+    private static final float BIRD_POSITION = 1/3F;
     //鸟的大小
     private static final int BIRD_SIZE = 30;
     //鸟的横坐标
