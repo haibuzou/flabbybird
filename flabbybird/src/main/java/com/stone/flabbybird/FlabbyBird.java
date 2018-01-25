@@ -84,7 +84,7 @@ public class FlabbyBird extends SurfaceView implements SurfaceHolder.Callback, R
     //记录需要移除的管道
     private List<Pipe> removePipeList = new ArrayList<Pipe>();
     //设定300dp的时候生成管道
-    private final int DIS_CREAT_PIPE = Util.dip2px(getContext(),60);
+    private final int DIS_CREAT_PIPE = Util.dip2px(getContext(),150);
 
     //记录移动的距离达到 DIS_CREAT_PIPE 时移除管道
     private int tmpPipeMoveDistance;
@@ -261,7 +261,7 @@ public class FlabbyBird extends SurfaceView implements SurfaceHolder.Callback, R
 
                 //不断记录移动的距离
                 tmpPipeMoveDistance += speed;
-                if(tmpPipeMoveDistance >= DIS_CREAT_PIPE){
+                if(tmpPipeMoveDistance >= createPipeX()){
                     Pipe pipe = new Pipe(mWidth,mHeight,upbmp,downbmp);
                     pipeList.add(pipe);
                     tmpPipeMoveDistance = 0;
@@ -316,6 +316,14 @@ public class FlabbyBird extends SurfaceView implements SurfaceHolder.Callback, R
                 status = GameStatus.OVER;
                 break;
             }
+        }
+    }
+
+    public int createPipeX(){
+        if(mRemovePipes < 5) {
+            return Util.dip2px(getContext(),160);
+        }else{
+            return Util.dip2px(getContext(),100);
         }
     }
 
